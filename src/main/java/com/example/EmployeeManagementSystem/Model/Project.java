@@ -18,7 +18,7 @@ public class Project {
     @Column
     private String description;
 @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "projectsEntity")
+    @ManyToMany
     private Set<Employee> employees;
 
     // Constructors

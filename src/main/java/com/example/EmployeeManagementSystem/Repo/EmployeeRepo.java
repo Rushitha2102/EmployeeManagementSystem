@@ -13,4 +13,10 @@ public interface EmployeeRepo extends JpaRepository<Employee,Integer> {
     @Query("SELECT e FROM Employee e WHERE e.departmentEntity.name = :departmentName")
     List<Employee> findByDepartmentName(@Param("departmentName") String departmentName);
 
+    @Query("SELECT e FROM Employee e WHERE e.departmentEntity.id = :departmentId")
+    List<Employee> getEmployeesByDepartmentID(@Param("departmentId") int departmentId);
+        @Query("SELECT e FROM Employee e JOIN FETCH e.department d JOIN FETCH e.project p JOIN FETCH e.address a")
+        List<Employee> findAllWithDetails();
+
 }
+

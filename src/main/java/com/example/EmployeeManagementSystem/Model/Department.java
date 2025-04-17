@@ -15,7 +15,7 @@ public class Department {
     @Column
     private String name;
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "department_id", referencedColumnName = "departmentId")
     private List<Employee> employees;
 
@@ -52,4 +52,5 @@ public class Department {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
+
 }

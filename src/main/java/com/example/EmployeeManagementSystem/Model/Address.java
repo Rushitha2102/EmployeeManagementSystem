@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 
 @Entity
 public class Address {
-
+@OneToOne
+private Employee employee;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int addressId;

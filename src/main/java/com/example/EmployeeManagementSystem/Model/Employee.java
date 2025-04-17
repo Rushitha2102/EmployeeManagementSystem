@@ -3,7 +3,8 @@ package com.example.EmployeeManagementSystem.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-        import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -11,21 +12,21 @@ public class Employee {
 
     @Id
     @GeneratedValue
-    @NotNull(message = "Employee ID cannot be null")
     private Integer employeeId;
 
     @Column
+    @NotBlank(message = "name is must")
     private String name;
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "address_id")
     private Address address;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "department_id")
     private Department departmentEntity;
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "employee_projects",
             joinColumns = @JoinColumn(name = "employee_id"),
